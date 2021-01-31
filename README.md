@@ -3,3 +3,6 @@ This repository explains the characterization of nfet device from sky130 technol
 
 # Table of Contents
 - [Spice netlist for output characteristics of nfet device](#spice-netlist-for-output-characteristics-of-nfet-device)
+
+# Spice netlist for output characteristics of nfet device
+
