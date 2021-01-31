@@ -35,6 +35,6 @@ Vin in 0 1.8V
 
 The above spice netlist gives the output transfer characteristic of nfet_01v8 mos device from sky130 technology. Here, the supply voltage of 1.8V is taken and drain to source voltage (Vds) is sweeped from 0 to 1.8V with a step of 0.1V and the gate to source voltage (Vgs) is sweeped from 0 to 1.8V with a step of 0.2V.
 
-From the Ids vs Vds curve we can observe the linear and saturation region and in saturation region the line has to be constant(flat line) but because it is slightly dependant on Vds voltage it can be observed from the waveform that there is slight slope in saturation region. This variation can be defined from lambda.
+From the Ids vs Vds curve we can observe the linear and saturation region and in saturation region the line has to be constant(flat line) but because it is slightly dependant on Vds voltage it can be observed from the waveform that there is slight increase in Ids in saturation region. This variation can be defined from lambda.
 
 
