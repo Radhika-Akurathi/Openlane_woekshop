@@ -1,0 +1,47 @@
+*Model Description
+.param temp=27
+
+
+*Including sky130 library files
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+
+*Netlist Description
+
+
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=1.68 l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.42 l=0.15
+
+
+Cload out 0 50fF
+
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+.control
+
+	let nmoswidth = 0.42
+ 	alter XM2 W = nmoswidth
+	
+	let pmoswidth = 1.68
+	alter XM1 W = pmoswidth
+	
+	let widthvariation = 0
+	dowhile widthvariation < 4
+	echo "nmos width is $&nmoswidth"
+	echo "pmos width is $&pmoswidth"
+	dc Vin 0 1.8 0.01
+	let nmoswidth = nmoswidth + 0.42
+	let pmoswidth = pmoswidth - 0.42
+	alter @XM2[W] = nmoswidth
+	alter @XM1[W] = pmoswidth
+let widthvariation = widthvariation + 1
+end
+
+plot dc1.out vs in dc2.out vs in dc3.out vs in dc4.out vs in xlabel "input voltage(V)" ylabel "output voltage(V)" title "Inveter Dc characteristics as a function of NMOS-PMOS width"
+
+.endc
+
+.end
+
+
